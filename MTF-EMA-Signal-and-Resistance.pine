@@ -1,0 +1,34 @@
+//@version=4
+// 
+// Multi Time Frame EMA Signal & Resistance by @samgozman (https://github.com/samgozman)
+// 
+// How to use this script: https://github.com/samgozman/MTF-EMA-Signal-and-Resistance
+// 
+// ++++++++++ Warning: The script is provided for educational purposes only. ++++++++++ //
+
+study(title="Multi Time Frame EMA Signal & Resistance", shorttitle="MTF EMA Signal & Resistance", overlay=true)
+
+// ++++++++++ INPUTS: main ++++++++++ //
+src = input(title="EMA Source", type=input.source, defval=close)
+ema_main_len = input(title="Signal/Resistance EMA Length", type=input.integer, defval=200)
+ema_main_time_1 = input(title="Signal EMA timeframe", type=input.resolution, defval="D")
+ema_main_time_2 = input(title="Resistance EMA timeframe", type=input.resolution, defval="W")
+// ++++++++++ INPUTS: classic ++++++++++ //
+display_classic = input(title="Display classic EMA's", type=input.bool, defval=true)
+ema_middle_classic_len = input(title="Middle EMA Length", type=input.integer, defval=50)
+ema_fast_classic_len = input(title="Fast EMA Length", type=input.integer, defval=20)
+
+// ++++++++++ LOGIC: main ++++++++++ //
+ema_main = ema(src, ema_main_len)
+emal1 = security(syminfo.tickerid, ema_main_time_1, ema_main)
+emal2 = security(syminfo.tickerid, ema_main_time_2, ema_main)
+// ++++++++++ LOGIC: classic ++++++++++ //
+ema_middle = ema(src, ema_middle_classic_len)
+ema_fast = ema(src, ema_fast_classic_len)
+
+// ++++++++++ PLOT: main ++++++++++ //
+plot(emal1, title="Signal Long EMA", color= emal1 > emal2 ? color.green : color.red,  linewidth=2)
+plot(emal2, title="Resistance Long EMA", color=color.orange, linewidth=3)
+// ++++++++++ PLOT: classic ++++++++++ //
+plot(display_classic ? ema_middle : na, color=color.blue, linewidth=1, title="Middle EMA")
+plot(display_classic ? ema_fast : na, color=color.purple, linewidth=1, title="Fast EMA")
