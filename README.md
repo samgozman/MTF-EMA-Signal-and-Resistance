@@ -1,6 +1,6 @@
 # MTF-EMA-Signal-and-Resistance
 
-[Link to the script on TradingView]()
+[Link to the script on TradingView](https://ru.tradingview.com/script/bjKGx2jN-multi-time-frame-ema-signal-resistance/)
 
 > **Warning: the script is provided for educational purposes only.**
 
