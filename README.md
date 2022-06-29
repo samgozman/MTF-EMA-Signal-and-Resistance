@@ -1,5 +1,7 @@
 # MTF-EMA-Signal-and-Resistance
 
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/C0C1DI4VL)
+
 [Link to the script on TradingView](https://ru.tradingview.com/script/bjKGx2jN-multi-time-frame-ema-signal-resistance/)
 
 > **Warning: the script is provided for educational purposes only.**
